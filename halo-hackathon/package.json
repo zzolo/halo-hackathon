@@ -1,0 +1,12 @@
+{
+  "name": "halo-osc",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "node-osc": "~0.1.2"
+  },
+  "devDependencies": {}
+}
