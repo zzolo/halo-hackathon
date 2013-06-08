@@ -2,12 +2,16 @@
   "name": "ZHalo",
   "version": "0.0.1",
   "dependencies": {
-    "node-osc": "~0.1.2"
+    "node-osc": "~0.1.2",
+    "moment": "~2.0.0",
+    "chroma-js": "~0.4.8",
+    "underscore": "~1.4.4",
+    "node-rest-client": "~0.1.1"
   },
   "devDependencies": {},
   "readmeFilename": "README.md",
   "gitHead": "55ca889c49360e40004b36b6dbc62f7a774e8e96",
-  "description": "halo-hackathon ==============",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,6 +20,6 @@
     "type": "git",
     "url": "git://github.com/zzolo/halo-hackathon.git"
   },
-  "author": "",
+  "author": "zzolo",
   "license": "BSD"
 }
