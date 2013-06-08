@@ -11,7 +11,7 @@ var restClient = new RestClient();
 
 
 // Global vars
-var defaultBusStop = '17948'; //'43275';
+var defaultBusStop = '17948'; //'43275'; //17931
 var speed = 1000 / 30;
 var colorScale = chroma.scale(['#FF0040', '#40FF00']).mode('lab');
 var dueScale = chroma.scale(['#0040FF', '#00BFFF']).mode('lab');
@@ -144,10 +144,14 @@ function renderBus(bus, row) {
     // Clear loop
     if (busDueIntervals[row]) {
       clearInterval(busDueIntervals[row]);
+      halo.controlHalo(11, row, blackColor, 0.1);
     }
   
     // Mark stop
     halo.controlHalo(11, row, chromaToHalo(chroma.color(stopColor)), 0.1);
+    setTimeout(function() {
+      halo.controlHalo(11, row, chromaToHalo(chroma.color(stopColor)), 0.1);
+    }, 110);
   }
   
   // Mark bus location    
@@ -168,14 +172,17 @@ function renderBus(bus, row) {
 // Bus is due, so make it cool
 function busDue(bus, row) {
   var led = 0;
+  halo.controlHalo(11, row, blackColor, 0.1);
 
   var interval = setInterval(function() {
     //console.log((led % 30), led, chromaToHalo(dueScale((led % 31) / 31).brighter()));
     
     halo.controlLED(11, row, (led % 31) - 1, blackColor, 50);
-    halo.controlLED(11, row, (led % 31), chromaToHaloScale(dueScale((led % 100) / 100)), 100);
+    halo.controlLED(11, row, (led % 31) - 2, blackColor, 50);
+    halo.controlLED(11, row, (led % 31) - 3, blackColor, 50);
+    halo.controlLED(11, row, (led % 31), chromaToHaloScale(dueScale((led % 100) / 100).brighter()), 50);
     led++;
-  }, 100); 
+  }, 50);
   busDueIntervals[row] = interval;
 }
 
