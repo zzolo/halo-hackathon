@@ -137,18 +137,20 @@ function renderBus(bus, row) {
   //bus.DepartureText = 'Due';
     
   // If due
+  halo.controlHalo(11, row, chromaToHalo(chroma.color(stopColor)), 0.1);
+  
+  // Clear loop
+  if (busDueIntervals[row]) {
+    clearInterval(busDueIntervals[row]);
+    halo.controlHalo(11, row, blackColor, 0.1);
+  }
+  
   if (bus.DepartureText.toLowerCase() === 'due') {
     busDue(bus, row);
   }
   else {
-    // Clear loop
-    if (busDueIntervals[row]) {
-      clearInterval(busDueIntervals[row]);
-      halo.controlHalo(11, row, blackColor, 0.1);
-    }
   
     // Mark stop
-    halo.controlHalo(11, row, chromaToHalo(chroma.color(stopColor)), 0.1);
     setTimeout(function() {
       halo.controlHalo(11, row, chromaToHalo(chroma.color(stopColor)), 0.1);
     }, 110);
@@ -160,11 +162,8 @@ function renderBus(bus, row) {
     
     // Mark
     if (bus.minutes <= group && bus.minutes > next) {
-      halo.controlHalo(i, row, chromaToHalo(colorScale(bus.percentage).brighter()), 0.1);
-    }
-    else {
-      // Clear each marker
-      halo.controlHalo(i, row, resetColor, 0.1);
+      halo.controlHalo(i, row, chromaToHalo(colorScale(bus.percentage)), 0.1);
+      
     }
   });
 }

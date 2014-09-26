@@ -1,6 +1,7 @@
 # ZHalo
 
-Halo Hackathon at Eyeo
+Halo Hackathon at Eyeo.
+http://www.tangibleinteraction.com/artworks/halo
 
 ## Install
 
